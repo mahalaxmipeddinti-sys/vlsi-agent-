@@ -1,0 +1,5 @@
+{
+  "name": "VLSI Studio",
+  "description": "Autonomous AI-powered ASIC/SoC design, RTL generation, physical floorplanning, PDN power planning, and verification studio.",
+  "requestFramePermissions": []
+}
