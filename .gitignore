@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+.aider*
+.vercel
+*.zip
+__pycache__/
+downloads/
+test_extract*/

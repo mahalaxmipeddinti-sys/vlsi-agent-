@@ -22,6 +22,7 @@ import { PlacementViewer } from './components/PlacementViewer';
 import { RoutingViewer } from './components/RoutingViewer';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { CTSViewer } from './components/CTSViewer';
+import { SpiceSimulationViewer } from './components/SpiceSimulationViewer';
 
 import {
   Sparkles, X, ArrowRight, Zap, Code2, Activity, ShieldCheck,
@@ -41,7 +42,7 @@ type AppTab =
   | 'rtl' | 'testbench' | 'truthtable' | 'pin' | 'cmos'
   | 'schematic' | 'threed' | 'floorplan' | 'powerplan'
   | 'waveform' | 'diagram' | 'verification' | 'architecture'
-  | 'sta' | 'signoff' | 'placement' | 'routing' | 'cts';
+  | 'sta' | 'signoff' | 'placement' | 'routing' | 'cts' | 'spice';
 
 // â”€â”€â”€ Flow items â”€â”€â”€
 interface FlowItem {
@@ -57,6 +58,7 @@ const frontEndFlows: FlowItem[] = [
   { num: 5, title: 'RTL Verification',     sub: 'Test benches',                                     tab: 'testbench',    icon: ShieldCheck,  color: '#EF4444' },
   { num: 6, title: 'Logic Synthesis',      sub: 'CMOS logic ckt',                                   tab: 'cmos',         icon: Zap,          color: '#FBBF24' },
   { num: 7, title: 'DFT Verification',     sub: 'Test patterns',                                    tab: 'truthtable',   icon: CheckCircle2, color: '#34D399' },
+  { num: 8, title: 'SPICE Simulation',     sub: 'LTspice netlist & execution',                      tab: 'spice',        icon: Activity,     color: '#EF4444' },
 ];
 
 const backEndFlows: FlowItem[] = [
@@ -303,7 +305,7 @@ const TAB_LABELS: Partial<Record<AppTab, string>> = {
   pin: 'Placement', cmos: 'Logic Synthesis', schematic: 'Routing',
   threed: '3D Silicon Stack', floorplan: 'Floorplan', powerplan: 'Power Plan',
   waveform: 'CTS / Waveform', diagram: 'Logical Diagram', verification: 'Logical Verification',
-  architecture: 'Specification',
+  architecture: 'Specification', spice: 'SPICE Simulation',
 };
 
 // â”€â”€â”€ Main App â”€â”€â”€
@@ -656,6 +658,7 @@ end Behavioral;`);
             {activeTab === 'routing'      && <RoutingViewer />}
             {activeTab === 'sta'          && <STAViewer />}
             {activeTab === 'signoff'      && <SignoffViewer activeIcId={activeIcId} onNavigateToFirstStage={() => handleNavigateToTab('chat')} />}
+            {activeTab === 'spice'        && <SpiceSimulationViewer />}
             </ErrorBoundary>
           </div>
         </div>

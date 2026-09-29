@@ -76,7 +76,7 @@ export function ChatInterface({
   onSelectComponent
 }: ChatInterfaceProps) {
   const [userName, setUserName] = useState<string>(() => {
-    return localStorage.getItem('vlsi_user_name') || 'Sridher';
+    return localStorage.getItem('vlsi_user_name') || 'Karthik';
   });
   const [isEditingName, setIsEditingName] = useState(false);
   const [tempName, setTempName] = useState(userName);
@@ -95,7 +95,7 @@ export function ChatInterface({
   }, []);
 
   const handleSaveName = () => {
-    const trimmed = tempName.trim() || 'Sridher';
+    const trimmed = tempName.trim() || 'Karthik';
     setUserName(trimmed);
     localStorage.setItem('vlsi_user_name', trimmed);
     setIsEditingName(false);
